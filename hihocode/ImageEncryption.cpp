@@ -55,10 +55,10 @@ bool comp(vector< vector<int> >& f, vector< vector<int> >& t, int N){
 
 void dfs(vector< vector<int> >& res, int N, int i, int j){
 	if(N%2==0){
-		dfs(res, N/2, 0, 0);
-		dfs(res, N/2, 0, N/2);
-		dfs(res, N/2, N/2, 0);
-		dfs(res, N/2, N/2, N/2);
+		dfs(res, N/2, i, j);
+		dfs(res, N/2, i, j+N/2);
+		dfs(res, N/2, i+N/2, j);
+		dfs(res, N/2, i+N/2, j+N/2);
 	}
 	vector< vector<int> > min(N, vector<int>(N, 0));
 	vector< vector<int> > tp(N, vector<int>(N, 0));
@@ -78,6 +78,10 @@ void dfs(vector< vector<int> >& res, int N, int i, int j){
 	for(int row=i;row<i+N;row++)
 		for(int col=j;col<j+N;col++)
 			res[row][col] = min[row-i][col-j];
+	// for(auto mm:min){
+	// 	for(auto nn:mm)
+	// 		cout<nn;
+	// }
 }
 
 
